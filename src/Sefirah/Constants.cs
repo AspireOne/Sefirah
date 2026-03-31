@@ -1,6 +1,17 @@
 namespace Sefirah;
 public static class Constants
 {
+    public static class AppIdentity
+    {
+#if DEV_PACKAGE
+        public const string DisplayName = "Sefirah Dev";
+        public const string ProtocolScheme = "sefirah-dev";
+#else
+        public const string DisplayName = "Sefirah";
+        public const string ProtocolScheme = "sefirah";
+#endif
+    }
+
     public static class Notification
     {
         public const string FileTransferGroup = "file-transfer";

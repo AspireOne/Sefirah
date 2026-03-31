@@ -49,6 +49,16 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(DevPackage)' == 'true'">
+        <WindowsAppxManifestPath>Package.dev.appxmanifest</WindowsAppxManifestPath>
+        <DefineConstants>$(DefineConstants);DEV_PACKAGE</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(DevPackage)' == 'true'">
+        <AppxManifest Remove="Package.appxmanifest" />
+        <AppxManifest Include="Package.dev.appxmanifest" />
+    </ItemGroup>
+
 
     <PropertyGroup Condition="'$(UapAppxPackageBuildMode)' == 'StoreUpload'">
         <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>

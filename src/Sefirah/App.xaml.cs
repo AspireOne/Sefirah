@@ -48,7 +48,7 @@ public partial class App : Application
         {
             var builder = this.ConfigureApp(args);
             MainWindow = builder.Window;
-            MainWindow.AppWindow.Title = "Sefirah";
+            MainWindow.AppWindow.Title = Constants.AppIdentity.DisplayName;
             MainWindow.SetWindowIcon();
 #if WINDOWS
             WindowHandle = WindowNative.GetWindowHandle(MainWindow);
@@ -175,7 +175,7 @@ public partial class App : Application
         await MainWindow.DispatcherQueue.EnqueueAsync(() => InitializeApplicationAsync(activatedEventArgs));
     }
 
-    /// <summary>Parses sefirah://&lt;package&gt; and launches scrcpy for that package.</summary>
+    /// <summary>Parses the app protocol URI and launches scrcpy for that package.</summary>
     private static async void HandleProtocolActivationArgs(ProtocolActivatedEventArgs protocolArgs)
     {
         var package = protocolArgs.Uri.Host;

@@ -94,7 +94,7 @@ internal class Program
     {
         var package = GetHostedAppPackage(args);
         if (string.IsNullOrEmpty(package)) return;
-        var uri = new Uri($"sefirah://{package}");
+        var uri = new Uri($"{Constants.AppIdentity.ProtocolScheme}://{package}");
         Launcher.LaunchUriAsync(uri).AsTask().GetAwaiter().GetResult();
     }
 
